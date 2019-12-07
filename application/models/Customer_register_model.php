@@ -1,5 +1,5 @@
 <?php
-class Register_model extends CI_Model
+class Customer_register_model extends CI_Model
 {
  function insert($data)
  {

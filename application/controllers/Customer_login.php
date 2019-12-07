@@ -1,30 +1,26 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Customer_login extends CI_Controller {
 
 	function __construct()
 		{
 			  parent::__construct();
-			  $this->load->Model('Customer_login_model');
-			  //$this->load->library('session');
-			  
+			  $this->load->Model('Customer_login_model'); 
 		}
 	public function index()
 	{
 		$this->load->view('customer/login');
 		
 	}
-	public function customer_login()
+	public function login()
 	{
 		
 		$data['email']=$this->input->post('email');
 		$data['password']=md5($this->input->post('password'));
 
 		$query =$this->Customer_login_model->login_customer($data);
-		/*print_r($result);
-		exit();*/
-		//$this->session->set_flashdata('message', 'Please login');
+		
 		if ($query->num_rows() == 1) 
         {
             
@@ -37,9 +33,8 @@ class Login extends CI_Controller {
 		}
      	else 
      	{
-     		// echo "Wrong";
      		$this->session->set_flashdata('user_wrong_email_password', 'Wrong email or password');     
-     		redirect(base_url()."login");
+     		redirect(base_url()."customer_login");
      	}
 		
 	}
