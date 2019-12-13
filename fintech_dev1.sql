@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2019 at 02:32 AM
+-- Generation Time: Dec 13, 2019 at 05:33 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.2.24
 
@@ -37,6 +37,28 @@ CREATE TABLE `cache` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `name` varchar(25) NOT NULL,
+  `email` varchar(80) NOT NULL,
+  `message` text NOT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `name`, `email`, `message`, `created`) VALUES
+(1, 'faisal malik', 'fassi932@gmail.com', 'asdsadasdasdadasd', '2019-12-13 12:06:33'),
+(2, 'qaiser', 'info@localhost.com', 'asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca ', '2019-12-13 12:54:15');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -48,6 +70,31 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `frontend_users`
+--
+
+CREATE TABLE `frontend_users` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `frontend_users`
+--
+
+INSERT INTO `frontend_users` (`id`, `first_name`, `last_name`, `email`, `password`, `status`, `created_at`, `updated_at`) VALUES
+(5, 'faisalmalik', 'malik', 'fassi932@gmail.com', 'd0970714757783e6cf17b26fb8e2298f', 1, '2019-12-13 08:43:22', NULL),
+(6, 'qaiser', 'malik', 'info@localhost.com', 'd0970714757783e6cf17b26fb8e2298f', 1, '2019-12-13 11:22:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -101,7 +148,9 @@ INSERT INTO `ledgers` (`id`, `user_type`, `user_id`, `recordable_type`, `recorda
 (5, 'App\\Models\\Auth\\User', 1, 'App\\Models\\Auth\\User', 1, 4, 'updated', '{\"id\":1,\"uuid\":\"5b983c3b-64ef-405c-9f23-6e50313c35fc\",\"first_name\":\"Super\",\"last_name\":\"Admin\",\"email\":\"admin@admin.com\",\"avatar_type\":\"gravatar\",\"avatar_location\":null,\"password\":\"$2y$10$vQn\\/jmEs229lX.Goq5.lAeIznHyOKiy95BStlOR.Mnm\\/E\\/mJWSLvG\",\"password_changed_at\":null,\"active\":1,\"confirmation_code\":\"33b48470a27b3dfb0fad9e59db3a498a\",\"confirmed\":1,\"timezone\":\"America\\/New_York\",\"last_login_at\":\"2019-11-30 19:55:01\",\"last_login_ip\":\"::1\",\"to_be_logged_out\":0,\"remember_token\":\"OQIOO1Bpb6I8giiBs9rzqstKHabe6Wj3RB97VJyHQNGhXltIEZdLTslSwizU\",\"created_at\":\"2019-11-30 05:40:25\",\"updated_at\":\"2019-11-30 19:55:01\",\"deleted_at\":null}', '[\"remember_token\"]', '[]', '[]', 'http://localhost:8080/boil/public/logout', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '7d144d32719514231312a46bd612d1b2f658afa4036af46a767ce85dc6abada59efe02b7ae43e108bb48b9469754d3382dac7180a656941bf6164f28618a5445', '2019-12-01 03:55:22', '2019-12-01 03:55:22'),
 (6, 'App\\Models\\Auth\\User', 1, 'App\\Models\\Auth\\User', 1, 4, 'updated', '{\"id\":1,\"uuid\":\"5b983c3b-64ef-405c-9f23-6e50313c35fc\",\"first_name\":\"Super\",\"last_name\":\"Admin\",\"email\":\"admin@admin.com\",\"avatar_type\":\"gravatar\",\"avatar_location\":null,\"password\":\"$2y$10$vQn\\/jmEs229lX.Goq5.lAeIznHyOKiy95BStlOR.Mnm\\/E\\/mJWSLvG\",\"password_changed_at\":null,\"active\":1,\"confirmation_code\":\"33b48470a27b3dfb0fad9e59db3a498a\",\"confirmed\":1,\"timezone\":\"America\\/New_York\",\"last_login_at\":\"2019-11-30 19:55:34\",\"last_login_ip\":\"::1\",\"to_be_logged_out\":0,\"remember_token\":\"OQIOO1Bpb6I8giiBs9rzqstKHabe6Wj3RB97VJyHQNGhXltIEZdLTslSwizU\",\"created_at\":\"2019-11-30 05:40:25\",\"updated_at\":\"2019-11-30 19:55:35\",\"deleted_at\":null}', '[\"last_login_at\",\"updated_at\"]', '[]', '[]', 'http://localhost:8080/boil/public/login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '2db65fadd5441dc8fd4d47253243ecc737030d375185b5e755cf7250981ce3397a60d2566ef30583fb7b5de39705d46238429fd1d82a25c526d1e43207320fff', '2019-12-01 03:55:35', '2019-12-01 03:55:35'),
 (7, 'App\\Models\\Auth\\User', 1, 'App\\Models\\Auth\\User', 1, 4, 'updated', '{\"id\":1,\"uuid\":\"5b983c3b-64ef-405c-9f23-6e50313c35fc\",\"first_name\":\"Super\",\"last_name\":\"Admin\",\"email\":\"admin@admin.com\",\"avatar_type\":\"gravatar\",\"avatar_location\":null,\"password\":\"$2y$10$vQn\\/jmEs229lX.Goq5.lAeIznHyOKiy95BStlOR.Mnm\\/E\\/mJWSLvG\",\"password_changed_at\":null,\"active\":1,\"confirmation_code\":\"33b48470a27b3dfb0fad9e59db3a498a\",\"confirmed\":1,\"timezone\":\"America\\/New_York\",\"last_login_at\":\"2019-11-30 19:55:34\",\"last_login_ip\":\"::1\",\"to_be_logged_out\":0,\"remember_token\":\"WIDUCcFHJzoyOQERnu1O8nhdRF9bHpxewYqsRBklGYayr4dxKUDHxwXA57lJ\",\"created_at\":\"2019-11-30 05:40:25\",\"updated_at\":\"2019-11-30 19:55:35\",\"deleted_at\":null}', '[\"remember_token\"]', '[]', '[]', 'http://localhost:8080/boil/public/logout', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '034017fe064b126866c27218284523c88cb916855cb59dd1628450ff155398a4ebaf4dbc3b4c05275303c270459a4b0defebd888f7b8fee2e1ce541029fe0ac3', '2019-12-01 03:55:42', '2019-12-01 03:55:42'),
-(8, 'App\\Models\\Auth\\User', 1, 'App\\Models\\Auth\\User', 1, 4, 'updated', '{\"id\":1,\"uuid\":\"5b983c3b-64ef-405c-9f23-6e50313c35fc\",\"first_name\":\"Super\",\"last_name\":\"Admin\",\"email\":\"admin@admin.com\",\"avatar_type\":\"gravatar\",\"avatar_location\":null,\"password\":\"$2y$10$vQn\\/jmEs229lX.Goq5.lAeIznHyOKiy95BStlOR.Mnm\\/E\\/mJWSLvG\",\"password_changed_at\":null,\"active\":1,\"confirmation_code\":\"33b48470a27b3dfb0fad9e59db3a498a\",\"confirmed\":1,\"timezone\":\"America\\/New_York\",\"last_login_at\":\"2019-11-30 19:56:02\",\"last_login_ip\":\"::1\",\"to_be_logged_out\":0,\"remember_token\":\"WIDUCcFHJzoyOQERnu1O8nhdRF9bHpxewYqsRBklGYayr4dxKUDHxwXA57lJ\",\"created_at\":\"2019-11-30 05:40:25\",\"updated_at\":\"2019-11-30 19:56:02\",\"deleted_at\":null}', '[\"last_login_at\",\"updated_at\"]', '[]', '[]', 'http://localhost:8080/boil/public/login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', 'b1e92717d29f6e0450ff875c69fbdc9461918faf96b01b798728d8ce25835b81bccce0e0b10132581b78a567a106f3210c3a6c1a4bbbed70f445c8bae20e9854', '2019-12-01 03:56:03', '2019-12-01 03:56:03');
+(8, 'App\\Models\\Auth\\User', 1, 'App\\Models\\Auth\\User', 1, 4, 'updated', '{\"id\":1,\"uuid\":\"5b983c3b-64ef-405c-9f23-6e50313c35fc\",\"first_name\":\"Super\",\"last_name\":\"Admin\",\"email\":\"admin@admin.com\",\"avatar_type\":\"gravatar\",\"avatar_location\":null,\"password\":\"$2y$10$vQn\\/jmEs229lX.Goq5.lAeIznHyOKiy95BStlOR.Mnm\\/E\\/mJWSLvG\",\"password_changed_at\":null,\"active\":1,\"confirmation_code\":\"33b48470a27b3dfb0fad9e59db3a498a\",\"confirmed\":1,\"timezone\":\"America\\/New_York\",\"last_login_at\":\"2019-11-30 19:56:02\",\"last_login_ip\":\"::1\",\"to_be_logged_out\":0,\"remember_token\":\"WIDUCcFHJzoyOQERnu1O8nhdRF9bHpxewYqsRBklGYayr4dxKUDHxwXA57lJ\",\"created_at\":\"2019-11-30 05:40:25\",\"updated_at\":\"2019-11-30 19:56:02\",\"deleted_at\":null}', '[\"last_login_at\",\"updated_at\"]', '[]', '[]', 'http://localhost:8080/boil/public/login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', 'b1e92717d29f6e0450ff875c69fbdc9461918faf96b01b798728d8ce25835b81bccce0e0b10132581b78a567a106f3210c3a6c1a4bbbed70f445c8bae20e9854', '2019-12-01 03:56:03', '2019-12-01 03:56:03'),
+(11, 'App\\Models\\Auth\\User', 1, 'App\\Models\\Auth\\User', 1, 4, 'updated', '{\"id\":1,\"uuid\":\"5b983c3b-64ef-405c-9f23-6e50313c35fc\",\"first_name\":\"Super\",\"last_name\":\"Admin\",\"email\":\"admin@admin.com\",\"avatar_type\":\"gravatar\",\"avatar_location\":null,\"password\":\"$2y$10$vQn\\/jmEs229lX.Goq5.lAeIznHyOKiy95BStlOR.Mnm\\/E\\/mJWSLvG\",\"password_changed_at\":null,\"active\":1,\"confirmation_code\":\"33b48470a27b3dfb0fad9e59db3a498a\",\"confirmed\":1,\"timezone\":\"America\\/New_York\",\"last_login_at\":\"2019-12-05 22:53:56\",\"last_login_ip\":\"::1\",\"to_be_logged_out\":0,\"remember_token\":\"WIDUCcFHJzoyOQERnu1O8nhdRF9bHpxewYqsRBklGYayr4dxKUDHxwXA57lJ\",\"created_at\":\"2019-11-30 05:40:25\",\"updated_at\":\"2019-12-05 22:53:57\",\"deleted_at\":null}', '[\"last_login_at\",\"updated_at\"]', '[]', '[]', 'http://localhost:8080/boil/public/login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', 'aa6a80b6e57c3d6592903db96d867bb43cef5bb1a87748d0ea8cdb2cc311ffa446496388220d939555826fa232b1f56560ad5b0eb6cb696ac7a83fdc630cce25', '2019-12-06 06:53:57', '2019-12-06 06:53:57'),
+(12, 'App\\Models\\Auth\\User', 1, 'App\\Models\\Auth\\Role', 3, 4, 'created', '{\"name\":\"faisal malik\",\"guard_name\":\"web\",\"updated_at\":\"2019-12-05 22:55:22\",\"created_at\":\"2019-12-05 22:55:22\",\"id\":3}', '[\"name\",\"guard_name\",\"updated_at\",\"created_at\",\"id\"]', '[]', '[]', 'http://localhost:8080/boil/public/admin/auth/role', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '66a7bf26b4ca53a85000bf5c0381bf7c63316adf0d1586f43443b10d7efe0c3a58e328232a12ac58d89cb25fbfa786615adca90bf52b24427abdcad16c72a94f', '2019-12-06 06:55:22', '2019-12-06 06:55:22');
 
 -- --------------------------------------------------------
 
@@ -238,7 +287,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 (1, 'administrator', 'web', '2019-11-30 13:40:25', '2019-11-30 13:40:25'),
-(2, 'user', 'web', '2019-11-30 13:40:25', '2019-11-30 13:40:25');
+(2, 'user', 'web', '2019-11-30 13:40:25', '2019-11-30 13:40:25'),
+(3, 'faisal malik', 'web', '2019-12-06 06:55:22', '2019-12-06 06:55:22');
 
 -- --------------------------------------------------------
 
@@ -256,7 +306,8 @@ CREATE TABLE `role_has_permissions` (
 --
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
-(1, 2);
+(1, 2),
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -345,10 +396,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `uuid`, `first_name`, `last_name`, `email`, `avatar_type`, `avatar_location`, `password`, `password_changed_at`, `active`, `confirmation_code`, `confirmed`, `timezone`, `last_login_at`, `last_login_ip`, `to_be_logged_out`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '5b983c3b-64ef-405c-9f23-6e50313c35fc', 'Super', 'Admin', 'admin@admin.com', 'gravatar', NULL, '$2y$10$vQn/jmEs229lX.Goq5.lAeIznHyOKiy95BStlOR.Mnm/E/mJWSLvG', NULL, 1, '33b48470a27b3dfb0fad9e59db3a498a', 1, 'America/New_York', '2019-12-01 03:56:02', '::1', 0, 'WIDUCcFHJzoyOQERnu1O8nhdRF9bHpxewYqsRBklGYayr4dxKUDHxwXA57lJ', '2019-11-30 13:40:25', '2019-12-01 03:56:02', NULL),
+(1, '5b983c3b-64ef-405c-9f23-6e50313c35fc', 'Super', 'Admin', 'admin@admin.com', 'gravatar', NULL, '$2y$10$vQn/jmEs229lX.Goq5.lAeIznHyOKiy95BStlOR.Mnm/E/mJWSLvG', NULL, 1, '33b48470a27b3dfb0fad9e59db3a498a', 1, 'America/New_York', '2019-12-06 06:53:56', '::1', 0, 'WIDUCcFHJzoyOQERnu1O8nhdRF9bHpxewYqsRBklGYayr4dxKUDHxwXA57lJ', '2019-11-30 13:40:25', '2019-12-06 06:53:57', NULL),
 (2, '983e597d-7782-4ccb-a976-e211e935acd8', 'Default', 'User', 'user@user.com', 'gravatar', NULL, '$2y$10$EONKqWexhd28GlHOKkOE8O1H6l//0DEeCvHruHriRD9uSTXqaAZYa', NULL, 1, '721486d8c69ab9719c911c70f4f5a4f7', 1, NULL, NULL, NULL, 0, NULL, '2019-11-30 13:40:25', '2019-11-30 13:40:25', NULL),
-(9, '', 'faisal', 'malik', 'admin@example.com', 'gravatar', NULL, 'AzJYM1A4BT8Fawo+CGAHNQ==', NULL, 1, '19b3f2ade52899db758cc962c6b6ee32', 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-(10, '', 'faisal', 'malik', 'fassi932@gmail.com', 'gravatar', NULL, 'B2YBP1ZhBmcEN1dh', NULL, 1, 'bf46bdb57bc8338a69f43fa4fb69b5a0', 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL);
+(20, '', 'Admin', 'Fintech', 'admin@fintech.com', 'gravatar', NULL, 'd0970714757783e6cf17b26fb8e2298f', NULL, 0, '0898a64bfa14c549d28b3edc9edb03c4', 0, NULL, NULL, NULL, 0, NULL, '2019-12-10 04:33:31', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -361,9 +411,21 @@ ALTER TABLE `cache`
   ADD UNIQUE KEY `cache_key_unique` (`key`);
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `frontend_users`
+--
+ALTER TABLE `frontend_users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -465,10 +527,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `frontend_users`
+--
+ALTER TABLE `frontend_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `jobs`
@@ -480,7 +554,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `ledgers`
 --
 ALTER TABLE `ledgers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -504,7 +578,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `social_accounts`
@@ -522,7 +596,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
