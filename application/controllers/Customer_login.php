@@ -16,6 +16,7 @@ class Customer_login extends CI_Controller {
 	public function login()
 	{
 		
+		
 		$data['email']=$this->input->post('email');
 		$data['password']=md5($this->input->post('password'));
 
@@ -26,6 +27,8 @@ class Customer_login extends CI_Controller {
             
 			
 			$result = $query->result();
+			/*print_r($result);
+			exit();*/
 		 	$session_data = array( 'email' => $result->email,"userid"=>$result->id);
 			$this->session->set_userdata('user_logged_in_fintech', $session_data);
 

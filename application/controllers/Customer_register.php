@@ -19,7 +19,7 @@ class Customer_register extends CI_Controller {
 		$this->form_validation->set_rules('first_name', 'FirstName', 'required|trim');
 		$this->form_validation->set_rules('last_name', 'LastName', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email Address', 'required|trim|valid_email|is_unique[users.email]');
-		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[25]');
 	  	if($this->form_validation->run())
 	  		{
 			   $verification_key = md5(rand());
@@ -28,6 +28,8 @@ class Customer_register extends CI_Controller {
 			   'first_name'  => $this->input->post('first_name'),
 			   'last_name'  => $this->input->post('last_name'),
 			   'email'  => $this->input->post('email'),
+			   'updated_at' => $this->input->post('updated_at'),        
+        		'created_at' => date('Y-m-d H:i:s'),
 			   'password' => $encrypted_password,
 			   'confirmation_code' => $verification_key,
 			   'active'	=>  '1'
@@ -40,27 +42,7 @@ class Customer_register extends CI_Controller {
 			  	$this->index();
 			  }
  	}
-
-
-
 }
-
-
-	/*public function login()
-	{
-		$data['first_name'] = $this->input->post('first_name');
-		$data['last_name'] = $this->input->post('last_name');
-	
-		$data['email'] = $this->input->post('email');
-		$data['password'] = $this->input->post('password');
-		$data['password_confirmation'] = $this->input->post('password_confirmation');
-		
-		$data['created'] =date('Y-m-d H:i:s');
-
-		$this->Register_model->contact_post_m($data);
-		//echo "Thank you";
-            redirect(base_url()."login");
-	}*/
 
 	
 
