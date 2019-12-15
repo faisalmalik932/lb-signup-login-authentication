@@ -15,9 +15,10 @@ class Customer_login_model extends CI_Model{
 public function login_customer($data)
     {
         $condition = "email =" . "'" . $data['email'] . "' AND " . "password =" . "'" . $data['password'] . "'";
-        $this->db->select('users.id, users.email');
+        $this->db->select('users.id, users.email, users.active');
         $this->db->from('users');
         $this->db->where($condition);
+        $this->db->where('active', 1);
         $this->db->limit(1);
         $query = $this->db->get();
         return $query;

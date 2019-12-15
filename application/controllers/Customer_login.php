@@ -18,7 +18,7 @@ class Customer_login extends CI_Controller {
 		
 		
 		$data['email']=$this->input->post('email');
-		$data['password']=md5($this->input->post('password'));
+		$data['password']=$this->input->post('password');
 
 		$query =$this->Customer_login_model->login_customer($data);
 		

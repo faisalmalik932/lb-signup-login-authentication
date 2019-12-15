@@ -16,14 +16,18 @@ class Customer_register extends CI_Controller {
 	}
 	function validation()
  	{
-		$this->form_validation->set_rules('first_name', 'FirstName', 'required|trim');
-		$this->form_validation->set_rules('last_name', 'LastName', 'required|trim');
+ 		$this->load->library('session');
+		$this->form_validation->set_rules('first_name', 'FirstName', 'required|trim|alpha');
+		$this->form_validation->set_rules('last_name', 'LastName', 'required|trim|alpha');
 		$this->form_validation->set_rules('email', 'Email Address', 'required|trim|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[25]');
 	  	if($this->form_validation->run())
 	  		{
 			   $verification_key = md5(rand());
 			   $encrypted_password = $this->input->post('password');
+			   $code = $this->input->post('code');
+			   $set = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			   $code = substr(str_shuffle($set), 0, 12);
 			   $data = array(
 			   'first_name'  => $this->input->post('first_name'),
 			   'last_name'  => $this->input->post('last_name'),
@@ -31,10 +35,12 @@ class Customer_register extends CI_Controller {
 			   'updated_at' => $this->input->post('updated_at'),        
         		'created_at' => date('Y-m-d H:i:s'),
 			   'password' => $encrypted_password,
+			   'code' => $code,
 			   'confirmation_code' => $verification_key,
-			   'active'	=>  '1'
+			
+			   'active'	=>  '0'
 	   			);
-			   	$this->Customer_register_model->insert($data);
+			   	$id = $this->Customer_register_model->insert($data);
 
 			   	/*Email code goes here*/
 			   	$this->load->library('email');
@@ -50,7 +56,7 @@ class Customer_register extends CI_Controller {
 				
 				
 				
-				$config['mailtype'] = 'text';
+				$config['mailtype'] = 'html';
 				$config['wordwrap'] = TRUE;
 
 				$this->email->initialize($config);
@@ -62,31 +68,53 @@ class Customer_register extends CI_Controller {
 
 				$this->email->subject('User Registration Email');
 
-				$message = "You have been successfully registered, Your Email is: "
+				//$id  = $this->uri->segment(3);
+
+    			$verificationLink = base_url() . 'customer_register/verify/' . $id ;
+
+
+				$message = "<a href='".$verificationLink."' target='_blank'>VERIFY EMAIL</a><br /><br /><br />"
 							. $this->input->post('email')
 							. "And Your Password is: "
-							. $this->input->post('password');
+							. $this->input->post('password')
+							. "And Your Code is: " . $code
+							;
 
 
 				$this->email->message($message);
 
 				if($this->email->send())
 			     {
-			      echo 'Email sent.';
+			     	//redirect(base_url()."frontuser_login/");
+			     $this->session->set_flashdata('msg', 'A confirmation email has been sent to ' . $this->input->post('email') .'. Please activate your account using the link provided.');
+			      /*redirect(base_url() . 'customer_register/verify/'.$id);*/
 			     }
 			     else
 			    {
 			     show_error($this->email->print_debugger());
 			    }
 
-
-				redirect(base_url()."customer_login");
+			     echo $this->session->flashdata('msg');
+				//redirect(base_url()."customer_login");
  			}
 			else
 			  {
 			  	$this->index();
 			  }
  	}
+ 	public function verify($id) 
+ 	{
+    if($this->Customer_register_model->verifyEmail($id))
+    {
+    redirect(base_url('customer_login')); 
+    } 
+    else 
+    {
+        redirect(base_url('customer_register'));    
+    }
+
+}
+ 	
 }
 
 	
