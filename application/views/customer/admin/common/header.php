@@ -176,7 +176,12 @@
         <div class="d-flex align-items-center">
           <!-- START User Info-->
           <div class="pull-left p-r-10 fs-14 font-heading d-lg-block d-none">
-            <span class="semi-bold">David</span> <span class="text-master">Nest</span>
+            <?php
+                 foreach ($users as $user) 
+              {?>
+            <span class="semi-bold"><?php echo $user->first_name ?></span> <span class="text-master"><?php echo $user->last_name ?></span>
+            <?php
+             }?>
           </div>
           <div class="dropdown pull-right d-lg-block d-none">
             <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -50,6 +50,22 @@ class User_dashboard_model extends CI_Model{
     {
         $this->db->insert('contact', $data);
     }
+    function upload_m($data, $id) 
+    {
+       
+        $this->db->where('id', $id);
+        return $this->db->update('frontend_users', $data);
+    }
+    public function dashboard_users_info_m($id) 
+    {
+        $this->db->select('first_name, email');
+        $this->db->from('frontend_users');/*
+        $this->db->order_by("name", "asc");*/
+        $this->db->where('id',$id);
+       $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->result();
+    }
     
     
 }

@@ -4,13 +4,16 @@
 			<strong>Contact Us</strong>
         </div>
     <div class="card-body">
+        <?php
+   foreach ($dashboard_users_info as $user) 
+{?>
     	<form method="POST" action="<?php echo base_url()?>user_dashboard/contact_send">
     		
     		<div class="row">
     			<div class="col">
     				<div class="form-group">
     					<label for="name">Full Name</label> 
-    					<input type="text" name="name" id="name" value="" placeholder="Full Name" maxlength="191" required="required" autofocus="autofocus" class="form-control">
+    					<input type="text" name="name" id="name" value="<?php echo ucfirst(($user->first_name)); ?>" placeholder="Full Name" maxlength="191" required="required" autofocus="autofocus" class="form-control" readonly>
     				</div>
     			</div>
     		</div> 
@@ -18,7 +21,7 @@
     			<div class="col">
     				<div class="form-group">
     					<label for="email">E-mail Address</label> 
-    					<input type="email" name="email" id="email" value="" placeholder="E-mail Address" maxlength="191" required="required" class="form-control">
+    					<input type="email" name="email" id="email" value="<?php echo $user->email?>" placeholder="E-mail Address" maxlength="191" required="required" class="form-control" readonly>
     				</div>
     			</div>
     		</div> 
@@ -46,6 +49,8 @@
     			</div>
     		</div>
     	</form>
+        <?php
+        }?>
     </div>
 </div>
 </div>

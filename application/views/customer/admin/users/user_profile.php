@@ -81,12 +81,14 @@
             {?>
                   <tr>
                    <th>Avatar</th>
-                   <td><img src="http://localhost:8080/lboiler/public/storage/avatars/ppmZMBbgYsClPp59e0E82LCn0rQXQOrCqsacNe2U.jpeg" class="user-profile-image"></td>
+                   <td><img src="<?php echo base_url() ?>frontend/users/<?php echo $profile->pic?>" class="user-profile-image" width="64" height="64" >
+                     
+                   </td>
                   </tr>
 
             <tr>
                 <th>Name</th>
-                <td><?php echo $profile->first_name?></td>
+                <td><?php echo ucfirst(($profile->first_name))?></td>
             </tr>
 
             <tr>
@@ -96,15 +98,14 @@
 
             <tr>
                 <th>Status</th>
-                <td><span class="badge badge-success">Active</span></td>
+                
+
+
+                <td><span class="badge <?php echo $profile->status==1?"badge-success":"badge-danger" ?> ">
 
             </tr>
 
-            <tr>
-                <th>Confirmed</th>
-                <td><span class="badge badge-success"><?php echo $profile->confirmed?></span></td>
-   
-            </tr>
+            
 
             <tr>
                 <th>Timezone</th>

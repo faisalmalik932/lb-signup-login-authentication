@@ -19,15 +19,14 @@
     <div class="row col-md-12 col-md-offset-2 custyle">
     <table class="table table-striped custab">
     <thead>
-    <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new User</a>
-        <tr>
+    <!-- <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new User</a>
+        <tr> -->
             <th>Sr</th>     
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
-            <th>Confirmed</th>
-            <th>Roles</th>
-            <th>Permissions</th>
+            <th>Status</th>
+            
             
             
            
@@ -40,21 +39,19 @@
                  foreach ($users as $user) 
               {?>
                 <td><?php echo $serial ?></td>
-                <td><?php echo $user->first_name?></td>
-                <td><?php echo $user->last_name?></td>
+                <td><?php echo ucfirst(($user->first_name))?></td>
+                <td><?php echo ucfirst(($user->last_name))?></td>
                
                 <td><?php echo $user->email?></td>
 
-                <td><?php echo $user->confirmed?></td>
-                <td>admin</td>
-                <td>all</td>
+                <td><?php echo $user->status?></td>
                 
                 <td class="text-center"><a href="<?php echo base_url()?>users/delete_row/<?php echo $user->id;?>" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?')"><span class="glyphicon glyphicon-remove"></span> Del</a>
 
 
                 <a href="<?php echo base_url()?>users/profile/<?php echo $user->id;?>" class="btn btn-info btn-xs" ><i class="fa fa-eye" aria-hidden="true"></i></a>
 
-                <a href="<?php echo base_url()?>users/feature_row/<?php echo $user->id;?>/<?php echo $user->active==0?"1":"0" ?>" class="btn btn-danger btn-xs"><i class="fa <?php echo $user->active==1?"fa-minus-square-o":"fa-star-o" ?> "  aria-hidden="true"></i></a>
+                <a href="<?php echo base_url()?>users/feature_row/<?php echo $user->id;?>/<?php echo $user->status==0?"1":"0" ?>" class="btn btn-danger btn-xs"><i class="fa <?php echo $user->status==1?"fa-minus-square-o":"fa-star-o" ?> "  aria-hidden="true"></i></a>
 
                 <button type="button"  class="btn btn-primary btn-xs btn_users" data-toggle="modal" value="<?php echo $user->id ?>"
                 data-target="#"

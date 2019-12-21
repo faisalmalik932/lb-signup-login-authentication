@@ -58,14 +58,14 @@
               <span class="title">Users</span>
               <span class="details">234 New Users</span>
             </a>
-            <span class="icon-thumbnail"><i class="pg-mail"></i></span>
+            <span class="icon-thumbnail"><i class="fa fa-users"></i></span>
           </li>
 
           <li class="">
             <a href="<?php echo base_url()?>contact" class="detailed">
               <span class="title">Contacts</span>
             </a>
-            <span class="icon-thumbnail"><i class="pg-mail"></i></span>
+            <span class="icon-thumbnail"><i class="fa fa-file"></i></span>
           </li>
 
           <li class="">

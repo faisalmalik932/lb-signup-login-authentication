@@ -18,7 +18,7 @@ class Customer_login extends CI_Controller {
 		
 		
 		$data['email']=$this->input->post('email');
-		$data['password']=$this->input->post('password');
+		$data['password']=md5($this->input->post('password'));
 
 		$query =$this->Customer_login_model->login_customer($data);
 		
@@ -29,7 +29,7 @@ class Customer_login extends CI_Controller {
 			$result = $query->result();
 			/*print_r($result);
 			exit();*/
-		 	$session_data = array( 'email' => $result->email,"userid"=>$result->id);
+		 	$session_data = array('email' => $result[0]->email,"userid"=>$result[0]->id);
 			$this->session->set_userdata('user_logged_in_fintech', $session_data);
 
 			redirect(base_url('admin'));

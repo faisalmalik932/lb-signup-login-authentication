@@ -39,15 +39,17 @@ class User_dashboard extends CI_Controller {
 		$this->load->view('user/common/header');
 		$id = $this->session->userdata['frontuser_logged_in']['userid'];
           
-		//$data['dashboard_users'] = $this->User_dashboard_model->users_contact($id);
-
-		$this->load->view('user/contact'/*, $data*/);
+		$data['dashboard_users_info'] = $this->User_dashboard_model->dashboard_users_info_m($id);
+		/*print_r($data['dashboard_users_info']);
+		exit();
+*/
+		$this->load->view('user/contact', $data);
 		
 	}
 	public function contact_send()
 	{
 		
-		$data['name'] = $this->input->post('name');
+		$data['name'] = strtolower($this->input->post('name'));
 		$data['email'] = $this->input->post('email');
 	
 		$data['message'] = $this->input->post('message');
@@ -62,8 +64,8 @@ class User_dashboard extends CI_Controller {
       {
           $data['id']=$this->input->post('id');
           $id=$data['id'];
-          $data['first_name']=$this->input->post('first_name');
-          $data['last_name']=$this->input->post('last_name');
+          $data['first_name'] = strtolower($this->input->post('first_name'));
+          $data['last_name']= strtolower($this->input->post('last_name'));
           $data['email']=$this->input->post('email');
           $table="frontend_users";
      
@@ -88,5 +90,68 @@ class User_dashboard extends CI_Controller {
 
 	    redirect(base_url('frontuser_register'));
 	}
+	public function img_upload()
+	{
+		
+		$this->load->view('user/common/header');
+		$this->load->view('user/img_upload');
+	}
+		
+		
+	public function upload()
+	{
+		
+		$this->load->view('user/common/header');
+		$this->load->view('user/img_upload');
+
+		$data['pic'] = $this->input->post('pic');
+
+		if ($_FILES['pic']['error'] != 4 ) 
+                { 
+                    $config['upload_path'] = './frontend/users/';
+                    $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                    $config['max_size'] = '20000';
+                    $config['max_width']  = '20240';
+                    $config['max_height']  = '17680';
+                    $config['encrypt_name'] = TRUE;
+                    $config['file_ext_tolower'] = TRUE;
+                    $this->load->library('upload', $config);
+                    $this->upload->initialize($config);
+
+                        if(!$this->upload->do_upload('pic'))
+                        {
+                             echo $this->upload->display_errors();
+                        }
+                        else
+                        {   
+
+                            $this->load->library('image_lib');
+                            $image_data=$this->upload->data();
+
+                            $configer =  array(
+                              'image_library'   => 'gd2',
+                              'maintain_ratio'   => TRUE,
+                              'quality'   => '100%',
+                              'source_image'    =>  $image_data['full_path'],
+                              'maintain_ratio'  =>  FALSE,
+                              'width'           =>  301, 
+                              'height'          =>  254,
+                            );
+                            $this->image_lib->clear();
+                            $this->image_lib->initialize($configer);
+                            $this->image_lib->resize();
+
+                            $abc = array('upload_data' => $this->upload->data());
+                            $Path=$abc['upload_data']['file_name'];
+                            $data['pic']=$Path;
+                            
+                        }
+                }
+		$id = $this->session->userdata['frontuser_logged_in']['userid'];
+		
+		$this->User_dashboard_model->upload_m($data, $id);
+        redirect(base_url()."user_dashboard");
+	}
+	
 	
 }

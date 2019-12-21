@@ -24,13 +24,13 @@ class Customer_register extends CI_Controller {
 	  	if($this->form_validation->run())
 	  		{
 			   $verification_key = md5(rand());
-			   $encrypted_password = $this->input->post('password');
+			   $encrypted_password = md5($this->input->post('password'));
 			   $code = $this->input->post('code');
 			   $set = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 			   $code = substr(str_shuffle($set), 0, 12);
 			   $data = array(
-			   'first_name'  => $this->input->post('first_name'),
-			   'last_name'  => $this->input->post('last_name'),
+			   'first_name'  => strtolower($this->input->post('first_name')),
+			   'last_name'  => strtolower($this->input->post('last_name')),
 			   'email'  => $this->input->post('email'),
 			   'updated_at' => $this->input->post('updated_at'),        
         		'created_at' => date('Y-m-d H:i:s'),
@@ -74,9 +74,10 @@ class Customer_register extends CI_Controller {
 
 
 				$message = "<a href='".$verificationLink."' target='_blank'>VERIFY EMAIL</a><br /><br /><br />"
-							. $this->input->post('email')
+							. "Your Email is: "
+							. $this->input->post('email') . "<br>"
 							. "And Your Password is: "
-							. $this->input->post('password')
+							. $this->input->post('password') . "<br>"
 							. "And Your Code is: " . $code
 							;
 
@@ -93,8 +94,10 @@ class Customer_register extends CI_Controller {
 			    {
 			     show_error($this->email->print_debugger());
 			    }
+			    
 
 			     echo $this->session->flashdata('msg');
+			     
 				//redirect(base_url()."customer_login");
  			}
 			else
@@ -104,14 +107,14 @@ class Customer_register extends CI_Controller {
  	}
  	public function verify($id) 
  	{
-    if($this->Customer_register_model->verifyEmail($id))
-    {
-    redirect(base_url('customer_login')); 
-    } 
-    else 
-    {
-        redirect(base_url('customer_register'));    
-    }
+    	if($this->Customer_register_model->verifyEmail($id))
+    	{
+    		redirect(base_url('customer_login')); 
+    	} 
+    	else 
+    	{
+        	redirect(base_url('customer_register'));    
+    	}
 
 }
  	

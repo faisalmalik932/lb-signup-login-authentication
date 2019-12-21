@@ -27,8 +27,8 @@
                  foreach ($dashboard_users as $user) 
               {?>
                 <td><?php echo $serial ?></td>
-                <td><?php echo $user->first_name?></td>
-                <td><?php echo $user->last_name?></td>
+                <td><?php echo ucfirst(($user->first_name)); ?></td>
+                <td><?php echo ucfirst(($user->last_name)); ?></td>
                
                 <td><?php echo $user->email?></td>
                 

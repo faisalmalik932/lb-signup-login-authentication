@@ -7,11 +7,14 @@ class Contact extends CI_Controller {
 		{
 			  parent::__construct();
 			  $this->load->Model('User_dashboard_model');
+			  $this->load->Model('Customer_users_model');
 			  //$this->header->head();
 		}
 	public function index()
 	{
-		$this->load->view('customer/admin/common/header');
+		$id = $this->session->userdata['user_logged_in_fintech']['userid'];
+        $data['users'] = $this->Customer_users_model->get_user($id);
+		$this->load->view('customer/admin/common/header' ,$data);
         $this->load->view('customer/admin/common/sidebar');
 
         $data['contacts'] = $this->User_dashboard_model->get_contact();

@@ -34,8 +34,8 @@
               {?>
                 <td><?php echo $serial ?></td>
                 <td><?php echo $contact->name?></td>
-               
-                <td><?php echo $contact->email?></td>
+
+                <td><a href="mailto:<?php echo $contact->email; ?>"><?php echo $contact->email; ?></a></td>
 
                 <td><?php echo $contact->message?></td>
                 

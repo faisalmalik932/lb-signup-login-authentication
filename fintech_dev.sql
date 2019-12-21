@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2019 at 05:33 AM
+-- Generation Time: Dec 21, 2019 at 03:00 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.2.24
 
@@ -54,7 +54,8 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`id`, `name`, `email`, `message`, `created`) VALUES
 (1, 'faisal malik', 'fassi932@gmail.com', 'asdsadasdasdadasd', '2019-12-13 12:06:33'),
-(2, 'qaiser', 'info@localhost.com', 'asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca ', '2019-12-13 12:54:15');
+(2, 'qaiser', 'info@localhost.com', 'asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca  asdasdadsd asvc acva ax cdca ', '2019-12-13 12:54:15'),
+(3, 'qaiser', 'info@localhost.com', 'hiyaaaaaaaaa', '2019-12-20 08:59:54');
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,9 @@ CREATE TABLE `frontend_users` (
   `last_name` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `pic` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL,
+  `code` varchar(20) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -92,9 +95,8 @@ CREATE TABLE `frontend_users` (
 -- Dumping data for table `frontend_users`
 --
 
-INSERT INTO `frontend_users` (`id`, `first_name`, `last_name`, `email`, `password`, `status`, `created_at`, `updated_at`) VALUES
-(5, 'faisalmalik', 'malik', 'fassi932@gmail.com', 'd0970714757783e6cf17b26fb8e2298f', 1, '2019-12-13 08:43:22', NULL),
-(6, 'qaiser', 'malik', 'info@localhost.com', 'd0970714757783e6cf17b26fb8e2298f', 1, '2019-12-13 11:22:55', NULL);
+INSERT INTO `frontend_users` (`id`, `first_name`, `last_name`, `email`, `password`, `pic`, `status`, `code`, `created_at`, `updated_at`) VALUES
+(34, 'faisal', 'malik', 'fassi932@gmail.com', 'd0970714757783e6cf17b26fb8e2298f', '8f3f5a69017d87c862c8ca5ebd813887.jpg', 1, '4Sl8KLORWzGQ', '2019-12-21 08:48:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -374,11 +376,15 @@ CREATE TABLE `users` (
   `first_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pic` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `frontend_users_id` int(11) NOT NULL,
+  `frontend_users_first_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `avatar_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'gravatar',
   `avatar_location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password_changed_at` timestamp NULL DEFAULT NULL,
-  `active` tinyint(3) UNSIGNED NOT NULL DEFAULT 1,
+  `active` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `code` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `confirmation_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `confirmed` tinyint(1) NOT NULL DEFAULT 0,
   `timezone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -395,10 +401,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `uuid`, `first_name`, `last_name`, `email`, `avatar_type`, `avatar_location`, `password`, `password_changed_at`, `active`, `confirmation_code`, `confirmed`, `timezone`, `last_login_at`, `last_login_ip`, `to_be_logged_out`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '5b983c3b-64ef-405c-9f23-6e50313c35fc', 'Super', 'Admin', 'admin@admin.com', 'gravatar', NULL, '$2y$10$vQn/jmEs229lX.Goq5.lAeIznHyOKiy95BStlOR.Mnm/E/mJWSLvG', NULL, 1, '33b48470a27b3dfb0fad9e59db3a498a', 1, 'America/New_York', '2019-12-06 06:53:56', '::1', 0, 'WIDUCcFHJzoyOQERnu1O8nhdRF9bHpxewYqsRBklGYayr4dxKUDHxwXA57lJ', '2019-11-30 13:40:25', '2019-12-06 06:53:57', NULL),
-(2, '983e597d-7782-4ccb-a976-e211e935acd8', 'Default', 'User', 'user@user.com', 'gravatar', NULL, '$2y$10$EONKqWexhd28GlHOKkOE8O1H6l//0DEeCvHruHriRD9uSTXqaAZYa', NULL, 1, '721486d8c69ab9719c911c70f4f5a4f7', 1, NULL, NULL, NULL, 0, NULL, '2019-11-30 13:40:25', '2019-11-30 13:40:25', NULL),
-(20, '', 'Admin', 'Fintech', 'admin@fintech.com', 'gravatar', NULL, 'd0970714757783e6cf17b26fb8e2298f', NULL, 0, '0898a64bfa14c549d28b3edc9edb03c4', 0, NULL, NULL, NULL, 0, NULL, '2019-12-10 04:33:31', NULL, NULL);
+INSERT INTO `users` (`id`, `uuid`, `first_name`, `last_name`, `email`, `pic`, `frontend_users_id`, `frontend_users_first_name`, `avatar_type`, `avatar_location`, `password`, `password_changed_at`, `active`, `code`, `confirmation_code`, `confirmed`, `timezone`, `last_login_at`, `last_login_ip`, `to_be_logged_out`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '5b983c3b-64ef-405c-9f23-6e50313c35fc', 'Super', 'Admin', 'admin@admin.com', '', 0, '', 'gravatar', NULL, '$2y$10$vQn/jmEs229lX.Goq5.lAeIznHyOKiy95BStlOR.Mnm/E/mJWSLvG', NULL, 1, '', '33b48470a27b3dfb0fad9e59db3a498a', 1, 'America/New_York', '2019-12-06 06:53:56', '::1', 0, 'WIDUCcFHJzoyOQERnu1O8nhdRF9bHpxewYqsRBklGYayr4dxKUDHxwXA57lJ', '2019-11-30 13:40:25', '2019-12-06 06:53:57', NULL),
+(2, '983e597d-7782-4ccb-a976-e211e935acd8', 'Default', 'User', 'user@user.com', '', 0, '', 'gravatar', NULL, '$2y$10$EONKqWexhd28GlHOKkOE8O1H6l//0DEeCvHruHriRD9uSTXqaAZYa', NULL, 1, '', '721486d8c69ab9719c911c70f4f5a4f7', 1, NULL, NULL, NULL, 0, NULL, '2019-11-30 13:40:25', '2019-11-30 13:40:25', NULL),
+(20, '', 'Admin', 'Fintech', 'admin@fintech.com', '', 0, '', 'gravatar', NULL, 'd0970714757783e6cf17b26fb8e2298f', NULL, 1, '', '0898a64bfa14c549d28b3edc9edb03c4', 0, NULL, NULL, NULL, 0, NULL, '2019-12-10 04:33:31', NULL, NULL),
+(37, '', 'adeel', 'danish', 'adeel.prosigns@gmail.com', '', 0, '', 'gravatar', NULL, '112233', NULL, 1, '', 'd460f12a25698debfb33f9b241620975', 0, NULL, NULL, NULL, 0, NULL, '2019-12-14 10:46:51', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -520,7 +527,9 @@ ALTER TABLE `user`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD KEY `email` (`email`),
+  ADD KEY `email_2` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -530,7 +539,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -542,7 +551,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `frontend_users`
 --
 ALTER TABLE `frontend_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `jobs`
@@ -596,7 +605,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- Constraints for dumped tables

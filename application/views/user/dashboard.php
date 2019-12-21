@@ -12,7 +12,28 @@
    foreach ($users as $user) 
 {?>
        <div class="col col-sm-4 order-1 order-sm-2  mb-4">
-        <div class="card mb-4 bg-light"><img src="https://www.gravatar.com/avatar/88b87698be0bc461f3cacf1f080929d5.jpg?s=80&amp;d=mm&amp;r=g" alt="Profile Picture" class="card-img-top"> 
+        <div class="card mb-4 bg-light">
+          <?php if ($user->pic) { ?>
+           <img src="<?php echo base_url() ?>frontend/users/<?php echo $user->pic?>" alt="Profile Picture" class="card-img-top">
+         <?php }
+         else {?>
+          <img src="https://www.gravatar.com/avatar/88b87698be0bc461f3cacf1f080929d5.jpg?s=80&amp;d=mm&amp;r=g" alt="Profile Picture" class="card-img-top"> 
+         <?php } ?>
+
+
+
+
+          <?php echo form_open_multipart('user_dashboard/upload');?>
+          <?php if (!$user->pic) { ?>
+          <input type="file" name="pic" class="form-control" required="">
+          <input class="btn btn-info btn-block" type="submit" name="submit" value="submit">
+          <?php }
+          ?>
+          <?php echo form_close();?>
+
+
+
+
          <div class="card-body">
           <h4 class="card-title"><?php echo ucfirst(($user->first_name)); ?><br></h4> 
           <p class="card-text">
